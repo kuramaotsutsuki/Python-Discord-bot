@@ -1,5 +1,5 @@
 import discord #importing discord 
-import jishaku #importing jishaku , it is a nice module which helps debugging and cog loading and unloading module so you dont have to make a load and uload stuff
+import jishaku #importing jishaku , it is a nice module which helps debugging and cog loading and unloading module so you dont have to make a load and unload stuff
 from discord.ext import commands #importing the commands and task frame work 
 
 
