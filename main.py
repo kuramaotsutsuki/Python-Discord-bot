@@ -1,6 +1,10 @@
-import discord #importing discord 
+import os
+import sys
+import discord 
+import traceback 
 import jishaku #importing jishaku , it is a nice module which helps debugging and cog loading and unloading module so you dont have to make a load and unload stuff
 from discord.ext import commands #importing the commands and task frame work 
+
 
 
 prefix = '+' #assigning the bot prefix 
@@ -18,11 +22,25 @@ async def on_ready():
     print("Bot is running.")
 
 
-@bot.command() # simple command which will say hellow when the hi command is used 
-async def hi(ctx):
-    message=hello 
-    await ctx.send(message)
-
-
-
+extensions = [
+			  'cogs.mod',
+			  'cogs.fun',           #importing our cogs 
+			  'cogs.apiinfo',
+			  'cogs.info',
+			  'cogs.extrafun',
+			  'cogs.ping',
+			  'cogs.animemanga',
+			  'cogs.help',
+			  'cogs.imagemaniplulation'
+]
+if __name__ == "__main__":
+    for extension in extensions:
+        try:
+            bot.load_extension(extension)
+        except Exception as e:
+            print(f"Error loading the {extension}", file=sys.stderr)
+            traceback.print_exc()
+            
+ bot.load_extension("jishaku")#loading the jishaku module 
+ 
 bot.run("token")# your token here should be in string format or just within inverted commas
